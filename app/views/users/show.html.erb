@@ -5,7 +5,7 @@
 <% end %>
 </p>
 <h3>Address</h3>
-<%= @user.address.body %>
+<%= @user.address.body unless @user.address.nil?%>
 <h3>Events</h3>
 <% @user.events.each do |event| %>
   Content:<%= event.content %>
@@ -15,9 +15,9 @@
   Content:<%= enrollment.content %>
 <% end %>
 <h3>Card</h3>
-<%= @user.card.info %>
+<%= @user.card.info unless @user.card.nil? %>
 <h3>BankInfo</h3>
-<%= @user.bank_info.info %>
+<%= @user.bank_info.info unless @user.bank_info.nil? %>
 <h3>Comments</h3>
 <% @user.comments.each do |comment| %>
   Content:<%= comment.body %>

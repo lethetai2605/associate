@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_18_033238) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_18_023248) do
   create_table "addresses", force: :cascade do |t|
     t.string "body"
     t.integer "user_id", null: false
@@ -54,15 +54,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_18_033238) do
     t.index ["user_id"], name: "index_enrollments_on_user_id"
   end
 
-  create_table "event_users", id: false, force: :cascade do |t|
-    t.integer "event_id", null: false
-    t.integer "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["event_id"], name: "index_event_users_on_event_id"
-    t.index ["user_id"], name: "index_event_users_on_user_id"
-  end
-
   create_table "events", force: :cascade do |t|
     t.string "content"
     t.datetime "created_at", null: false
@@ -88,7 +79,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_18_033238) do
   add_foreign_key "addresses", "users"
   add_foreign_key "enrollments", "events"
   add_foreign_key "enrollments", "users"
-  add_foreign_key "event_users", "events"
-  add_foreign_key "event_users", "users"
   add_foreign_key "posts", "users"
 end
