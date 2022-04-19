@@ -1,0 +1,24 @@
+<h3>Posts</h3>
+<% @user.posts.each do |post| %>
+  Title:<%= post.content %>
+  Body:<%= post.body %>
+<% end %>
+</p>
+<h3>Address</h3>
+<%= @user.address.body %>
+<h3>Events</h3>
+<% @user.events.each do |event| %>
+  Content:<%= event.content %>
+<% end %>
+<h3>Enrollments</h3>
+<% @user.enrollments.each do |enrollment| %>
+  Content:<%= enrollment.content %>
+<% end %>
+<h3>Card</h3>
+<%= @user.card.info %>
+<h3>BankInfo</h3>
+<%= @user.bank_info.info %>
+<h3>Comments</h3>
+<% @user.comments.each do |comment| %>
+  Content:<%= comment.body %>
+<% end %>
