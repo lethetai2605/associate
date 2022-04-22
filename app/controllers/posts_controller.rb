@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :find_user, only: %i[show create edit index new]
+  before_action :find_user
 
   def index
     @posts = @user.posts
@@ -32,7 +32,9 @@ class PostsController < ApplicationController
   end
 
   def destroy
-
+    @post = @user.posts.find(params[:id])
+    @post.destroy
+    redirect_to root_url
   end
 
   private

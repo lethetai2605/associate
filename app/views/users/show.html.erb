@@ -4,8 +4,10 @@
 <h3>
   <ul>
     <li>Number of posts:<%= @user.posts.count %></li>
+    <% if current_user.id == @user.id %>
     <li>Card:<%=  @user.card.mask_credit_card_number unless @user.card.nil? %></li>
     <li>BankInfo:<%= @user.bank_info.name unless @user.bank_info.nil? %></li>
+    <% end %>
   </ul>
 </h3>
 
