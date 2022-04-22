@@ -1,24 +1,36 @@
-<h3>Posts</h3>
-<% @user.posts.each do |post| %>
-  Title:<%= post.content %>
-  Body:<%= post.body %>
-<% end %>
-</p>
-<h3>Address</h3>
-<%= @user.address.body unless @user.address.nil?%>
-<h3>Events</h3>
-<% @user.events.each do |event| %>
-  Content:<%= event.content %>
-<% end %>
-<h3>Enrollments</h3>
-<% @user.enrollments.each do |enrollment| %>
-  Content:<%= enrollment.content %>
-<% end %>
-<h3>Card</h3>
-<%= @user.card.info unless @user.card.nil? %>
-<h3>BankInfo</h3>
-<%= @user.bank_info.info unless @user.bank_info.nil? %>
-<h3>Comments</h3>
-<% @user.comments.each do |comment| %>
-  Content:<%= comment.body %>
-<% end %>
+
+<h1>Show User</h1>
+
+<h3>
+  <ul>
+    <li>Number of posts:<%= @user.posts.count %></li>
+    <li>Card:<%=  @user.card.mask_credit_card_number unless @user.card.nil? %></li>
+    <li>BankInfo:<%= @user.bank_info.name unless @user.bank_info.nil? %></li>
+  </ul>
+</h3>
+
+<%= render "shared/users/profile" %>
+
+<h1>Comments</h1>
+<h3>
+<ul>
+  <% @user.posts.each do |post| %>
+    <% post.comments.each do |comment| %>
+    <li><%= comment.body %> 
+    - <%= link_to comment.user.profile.name, comment.user unless comment.user.profile.nil? %>
+    (<%= time_ago_in_words(comment.created_at) %> ago.)
+    </li>
+    <% end %>
+  <% end %>
+</ul>
+</h3>
+
+
+<h1>Participating Events</h1>
+<h3>
+<ul>
+  <% @user.events.each do |event| %>
+    <li><%= event.content %></li>
+  <% end %>
+</ul>
+</h3>

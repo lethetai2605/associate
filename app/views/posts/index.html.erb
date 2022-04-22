@@ -1,9 +1,10 @@
-<h2>All Posts</h2>
+<h1>Posts by <%= @user.name %></h1>
+
 <ul>
-<% @posts.each do |post| %>
-  <li>
+  <% @posts.each do |post| %>
+    <li>
       <%= post.content %>
       <%= post.body %>
-  </li>
-<% end %>
+    </li>
+  <% end %>
 </ul>

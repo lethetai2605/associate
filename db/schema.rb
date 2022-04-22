@@ -10,18 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_18_023248) do
-  create_table "addresses", force: :cascade do |t|
-    t.string "body"
-    t.integer "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_addresses_on_user_id"
-  end
-
+ActiveRecord::Schema[7.0].define(version: 2022_04_20_080400) do
   create_table "bank_infos", force: :cascade do |t|
     t.integer "card_id"
-    t.string "info"
+    t.string "name"
+    t.string "open_at"
+    t.string "branch"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["card_id"], name: "index_bank_infos_on_card_id"
@@ -29,7 +23,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_18_023248) do
 
   create_table "cards", force: :cascade do |t|
     t.integer "user_id"
-    t.string "info"
+    t.integer "number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_cards_on_user_id"
@@ -39,9 +33,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_18_023248) do
     t.string "body"
     t.string "commentable_type"
     t.integer "commentable_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "enrollments", force: :cascade do |t|
@@ -56,6 +52,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_18_023248) do
 
   create_table "events", force: :cascade do |t|
     t.string "content"
+    t.string "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -69,15 +66,28 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_18_023248) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "profiles", force: :cascade do |t|
     t.string "name"
+    t.string "address"
+    t.integer "telephone"
+    t.integer "age"
+    t.string "hobby"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
     t.string "email"
+    t.string "password"
+    t.boolean "is_admin", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "addresses", "users"
   add_foreign_key "enrollments", "events"
   add_foreign_key "enrollments", "users"
   add_foreign_key "posts", "users"
+  add_foreign_key "profiles", "users"
 end

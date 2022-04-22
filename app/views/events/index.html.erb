@@ -1,0 +1,8 @@
+<h1>List Events</h1>
+<ul>
+  <% @events.each do |event| %>
+      <li>
+        <%= link_to event.content, event %> - <%= event.users.count %> people
+      </li>
+  <% end %>
+</ul>

@@ -1,0 +1,11 @@
+<h1>Home Page</h1>
+
+<% flash.each do |type, msg| %>
+  <div class="alert alert-info">
+    <%= msg %>
+  </div>
+<% end %>
+<% unless logged_in? %>
+<p><%= link_to "Sign up", signup_path %></p>
+<p><%= link_to "Sign in", login_path %></p>
+<% end %>
