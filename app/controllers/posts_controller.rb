@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PostsController < ApplicationController
   before_action :find_user
 
@@ -27,9 +29,7 @@ class PostsController < ApplicationController
     @post = @user.posts.find(params[:id])
   end
 
-  def update
-
-  end
+  def update; end
 
   def destroy
     @post = @user.posts.find(params[:id])
@@ -43,7 +43,6 @@ class PostsController < ApplicationController
     @user = User.find(params[:user_id])
   end
 
-  
   def post_params
     params.require(:post).permit(:content, :body)
   end

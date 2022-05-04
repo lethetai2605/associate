@@ -1,19 +1,22 @@
+# frozen_string_literal: true
+
 class Admin::UsersController < ApplicationController
   before_action :logged_in_user
-  before_action :is_admin?, only: :index
+  before_action :admin?, only: :index
   def index
-    if params[:term]
-      @users = User.search(params[:term])
-    else
-      @users = User.all
-    end
-    if params[:sort] == "created_at"
+    @users = if params[:term]
+               User.search(params[:term])
+             else
+               User.all
+             end
+    case params[:sort]
+    when 'created_at'
       @users = User.sort_by_created_at
-    elsif params[:sort] == "name"
+    when 'name'
       @users = User.sort_by_name
     end
-    @user_count =  User.count
-    @event_count =  Event.count
+    @user_count = User.count
+    @event_count = Event.count
     @comment_count = Comment.count
     @post_count = Post.count
     @user_has_no_posts = User.where.missing(:posts).count
@@ -24,10 +27,19 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def export
+    csv = ExportCsvService.new User.all, User::CSV_ATTRIBUTES
+    respond_to do |format|
+      format.csv do
+        send_data csv.perform, filename: 'users.csv'
+      end
+    end
+  end
+
   private
 
-  def is_admin?
+  def admin?
     flash.alert = 'Account has no permissions'
-    redirect_to root_path unless current_user.is_admin?
+    redirect_to root_path unless current_user.admin?
   end
 end

@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   before_action :find_user, only: %i[show edit update destroy]
 
-  def show
-  end
+  def show; end
 
   def new
     @user = User.new
@@ -17,9 +18,8 @@ class UsersController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
-  
-  def edit
-  end
+
+  def edit; end
 
   def update
     if @user.update(user_params)
@@ -31,9 +31,9 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    
     redirect_to root_path, status: :see_other
   end
+
   private
 
   def user_params

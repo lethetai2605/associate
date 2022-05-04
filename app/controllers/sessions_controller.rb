@@ -1,16 +1,16 @@
-class SessionsController < ApplicationController
-  def new
+# frozen_string_literal: true
 
-  end
+class SessionsController < ApplicationController
+  def new; end
 
   def create
     user = User.find_by(email: params[:session][:email].downcase)
-    if user && user.authenticate(params[:session][:password])
+    if user&.authenticate(params[:session][:password])
       log_in user
       redirect_to user
     else
-    flash.alert = 'Invalid email/password combination'
-    redirect_to login_path
+      flash.alert = 'Invalid email/password combination'
+      redirect_to login_path
     end
   end
 

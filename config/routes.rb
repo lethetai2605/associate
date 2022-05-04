@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users do
       resources :posts
+      get 'export', on: :collection
     end
   end
   resources :users do

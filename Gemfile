@@ -62,6 +62,9 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+    gem 'rubocop-rails', require: false
+    gem 'rubocop-performance', require: false
+    gem 'rubocop-rspec', require: false
 end
 
 group :test do
@@ -72,3 +75,4 @@ group :test do
 end
 
 gem 'webpacker', '5.4.0'
+gem "net-http"
