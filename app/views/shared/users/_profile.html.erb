@@ -1,0 +1,14 @@
+
+<h1>Profile User</h1>
+
+<h3>
+  <% unless @user.profile.nil? %>
+  <ul>
+    <li>Name:<%= @user.profile.name %></li>
+    <li>Address:<%= @user.profile.address%></li>
+    <li>Telephone:<%= @user.profile.telephone%></li>
+    <li>Age:<%= @user.profile.age%></li>
+    <li>Hobby:<%= @user.profile.hobby %></li>
+  </ul>
+  <% end %>
+</h3>

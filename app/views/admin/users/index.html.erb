@@ -1,0 +1,27 @@
+<h3>Total Page</h3>
+<ul>
+  <li>User:<%= @user_count %></li>
+  <li>Event:<%= @event_count %></li>
+  <li>Comment:<%= @comment_count %></li>
+  <li>Post:<%= @post_count %></li>
+  <li>User has no posts:<%= @user_has_no_posts %></li>
+  <li>User has no comments:<%= @user_has_no_comments %></li>
+</ul>
+
+<h1>List Users</h1>
+<table>
+  <tr>
+    <th><%= link_to "Name", :sort => "name"%> </th>
+    <th><%= link_to "Created At", sort: :created_at%> </th>
+  </tr>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= link_to user.profile.name, user_path(user) unless user.profile.nil? %>(<%= user.email %>)</td>
+      <td><%= user.created_at %></td><td>
+    </tr>
+  <% end %>
+</table>
+<%= form_tag(admin_users_path, method: :get) do %>
+  <%= text_field_tag :term %>
+  <%= submit_tag 'Search' %>
+<% end %>

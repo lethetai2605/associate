@@ -1,0 +1,12 @@
+<h1>Posts by <%= @user.profile.name %></h1>
+
+<ul>
+  <% @posts.each do |post| %>
+    <li>
+      <%= post.content %>
+      <%= post.body %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "New Post", new_user_post_path(@user) %>

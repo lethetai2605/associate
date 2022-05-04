@@ -1,7 +1,21 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+admin = User.create(email: "admin@admin.com", password: "123", is_admin: true)
+# user1 = User.create({password: "test", email: "test@gmail.com"})
+# user2 = User.create({password: "test2", email: "test2@gmail.com"})
+# user3 = User.create({password: "test3", email: "test2@gmail.com"})
+# user4 = User.create({password: "test4", email: "a4@gmail.com"})
+# post1 = Post.create(content: "First Post",body: "test posts", author: User.first)
+# post2 = Post.create(content: "Second Post",body: "test posts", author: User.first)
+# post3 = Post.create(content: "ABC",body: "test posts", author: User.second)
+# post4 = Post.create(content: "DGH Post",body: "test posts", author: User.second)
+# profile = Profile.create(address: "Ha Noi", telephone: "0123456789", age: "", name: "Le Tai", hobby: "Game", user: User.first)
+# profile2 = Profile.create(address: "Ha Tay", telephone: "0123456729", age: "22", name: "Tu", hobby: "Game", user: User.second)
+# profile3 = Profile.create(address: "Ha Tay", telephone: "0123456729", age: "22", name: "Phong", hobby: "Game", user: User.third)
+# profile4 = Profile.create(address: "Ha Tay", telephone: "0123456729", age: "22", name: "Hai", hobby: "Game", user: User.fourth)
+# events = Event.create(content: "Tat nien 2022", body: "All memmber")
+# events2 = Event.create(content: "Quoc khanh 30/4", body: "All memmber")
+# enrollment = Enrollment.create(user: User.first, event: Event.first, content: "Ban to chuc")
+# card = Card.create(user: User.first, number: "1231314123")
+# bank_info = BankInfo.create(card: User.first.card, name: "Vietinbank", open_at: "Hai Ba Trung", branch: "Ha Noi")
+# comment = Comment.create(body: "hihi", commentable: Post.first, user: User.first)
+# comment2 = Comment.create(body: "Chaha", commentable: Post.first, user: User.second)
+# comment3 = Comment.create(body: "Event vui", commentable: Event.first, user: User.second)
