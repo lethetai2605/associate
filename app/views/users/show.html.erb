@@ -1,6 +1,7 @@
 
 <h1>Show User</h1>
-
+<% unless current_user.nil? %>
+<%= link_to "PDF", user_path(@user, format: :pdf), class: 'btn btn-primary' %>
 <h3>
   <ul>
     <li>Number of posts:<%= @user.posts.count %></li>
@@ -36,3 +37,4 @@
   <% end %>
 </ul>
 </h3>
+<% end %>

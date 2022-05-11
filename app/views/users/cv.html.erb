@@ -1,0 +1,40 @@
+<div class="main_container">
+  <div id="driver" >
+    <div class="header">
+      <div class="title">Driver</div>
+      <div class="contact">
+        <h2><%= @user.profile.address %></h2>
+        <h3><%= @user.email %></h3>
+        <h3><%= @user.profile.telephone %></h3>
+      </div>
+    </div>
+    <div class="avatar" class="row">
+      <div class="ava">
+         <%= image_tag image_url("cat.png"), width: 200, height: 200 %>
+      </div>
+      <div class="title">
+        <%= @user.profile.name %>
+      </div>
+    </div>
+  </div>
+  <div id="profile" class="row">
+    <div class="title">
+       Profile
+    </div>
+    <div class="content">
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+      <ul>
+        <li><%= @user.profile.age %></li>
+        <li><%= @user.profile.hobby %></li>
+      </ul>
+    </div>
+  </div>
+  <div id="employment-history" class="row">
+    <div class="title">
+      Employment History
+    </div>
+    <div class="content">
+      Driver at Albert's Trucking Company
+    </div>
+  </div>
+</div>
