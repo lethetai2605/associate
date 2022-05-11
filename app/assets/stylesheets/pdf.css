@@ -1,0 +1,62 @@
+* {
+	box-sizing: border-box;
+}
+
+.main_container { 
+	height: 1200px;
+}
+
+#driver {
+	border: 1px solid black;
+}
+
+.header {
+	overflow: auto;
+	height: 200px;
+}
+.contact {
+	float: left;
+	text-align: right;
+	width: 70%;
+}
+.title {
+	float: left;
+	width: 30%;
+	height: 200px;
+	text-align:center;
+	font-size: 40px;
+	padding: 40px;
+}
+
+.ava {
+	float: left;
+	width: 30%;
+	height: 200px;
+	
+}
+.avatar {
+	overflow: auto;
+	height: 210px;
+}
+.content {
+	float: left;
+	width: 70%;
+	height: 200px;
+	padding: 20px;
+}
+
+#profile {
+	height: 300px;
+}
+
+.row {
+	overflow: auto;
+	border: 1px solid black;
+}
+img {
+  object-position: 10px;
+  border-radius: 50%;
+}
+.ava {
+	margin-left: 50px;
+}

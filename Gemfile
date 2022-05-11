@@ -65,6 +65,8 @@ group :development do
     gem 'rubocop-rails', require: false
     gem 'rubocop-performance', require: false
     gem 'rubocop-rspec', require: false
+    gem "wicked_pdf"
+    gem "wkhtmltopdf-binary"
 end
 
 group :test do

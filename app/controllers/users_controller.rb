@@ -3,7 +3,17 @@
 class UsersController < ApplicationController
   before_action :find_user, only: %i[show edit update destroy]
 
-  def show; end
+  def show
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render template: 'users/cv',
+        formats: [:html],
+        pdf: "CV_#{@user.profile.name}",
+        layout: 'pdf'
+      end
+    end
+  end
 
   def new
     @user = User.new
